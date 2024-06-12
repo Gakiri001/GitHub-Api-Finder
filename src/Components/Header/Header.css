@@ -1,0 +1,47 @@
+.Header {
+  background-color: #070f2b;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Header .HeaderP1 h2 {
+  color: #a4b6cb;
+}
+
+.Header .HeaderP2 p {
+  color: #a4b6cb;
+  text-transform: capitalize;
+  font-size: 18px;
+}
+
+.Header .HeaderP2 p span {
+  text-decoration: underline;
+}
+
+.Header .HeaderP3 input {
+  padding: 10px 10px;
+}
+.Header .HeaderP3 input::placeholder {
+  text-transform: capitalize;
+}
+.Header .HeaderP3 button {
+  padding: 10px 10px;
+}
+@media screen and (max-width: 40em) {
+  .Header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 2rem;
+  }
+  .Header .HeaderP1 {
+    width: 50%;
+  }
+  .Header .HeaderP2 {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
