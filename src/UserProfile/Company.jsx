@@ -1,9 +1,10 @@
 import React from 'react'
+import { PiBuildingApartmentFill } from "react-icons/pi";
 
 function Company({UserCompany}) {
   return (
     <div>
-      <p> {UserCompany}</p>
+      <p><PiBuildingApartmentFill/> {UserCompany}</p>
       </div>
   )
 }

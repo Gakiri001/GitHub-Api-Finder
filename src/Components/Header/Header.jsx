@@ -5,6 +5,7 @@ import { useState } from "react";
 function Header() {
   const[profile, setProfile] = useState("Github")
   const[profileData, setProfileData] = useState(null)
+  const [userRepositories, setUserRepositories] = useState([])
   const[error, setError] = useState(false)
   const[loading, setLoading] = useState(false)
 
@@ -16,6 +17,7 @@ function Header() {
     ev.preventDefault()
     console.log("Github Search")
     setProfileData(null)
+    setUserRepositories([])
     setError(null)
   
   try{
@@ -37,8 +39,31 @@ function Header() {
     setError(`There was an error fetching the GitHub User data. Please check your internet connection`)
   }
   finally{
-
+    setLoading(false)
   }
+
+  try{
+    setLoading(true)
+    const responseRepos = await fetch(`https://api.github.com/users/${profile}/repos`)
+    console.log(responseRepos)
+    if(responseRepos.ok === true){
+      const dataRepos = await responseRepos.json()
+      console.log(dataRepos)
+      setUserRepositories(dataRepos)
+      setLoading(false)
+    }
+    else{
+      setError(`couldn't fetch ${profile}'s Repositories`)
+      setLoading(false)
+    }
+  }
+  catch(error){
+    setError(`There was an error fetching ${profile} Repositories. Please check the internet connection`)
+  }
+  finally{
+    setLoading(false)
+  }
+
 }
   return (
     <>
@@ -59,6 +84,7 @@ function Header() {
          <div>
          <GithubUser 
          profileData={profileData}
+         userRepositories={userRepositories}
          loading={loading}
          error={error}
          />
