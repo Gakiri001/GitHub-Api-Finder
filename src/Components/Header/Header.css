@@ -2,6 +2,7 @@
   background-color: #070f2b;
   padding: 1rem;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
@@ -28,6 +29,7 @@
 }
 .Header .HeaderP3 button {
   padding: 10px 10px;
+  cursor: pointer;
 }
 @media screen and (max-width: 40em) {
   .Header {

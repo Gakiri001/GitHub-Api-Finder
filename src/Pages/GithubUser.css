@@ -1,0 +1,10 @@
+.GithubUser{
+  display: flex;
+  justify-content: space-between;
+}
+.GithubUser .GithubUserLeft{
+  width: 30%;
+}
+.GithubUser .GithubUserRight{
+  width: 70%;
+}
