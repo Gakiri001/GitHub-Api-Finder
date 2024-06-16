@@ -1,7 +1,7 @@
 import React from 'react'
 import { MdLink } from "react-icons/md";
 
-function Followers({image,name,linktoFinder}) {
+function UserFollowers({image,name,linktoFinder}) {
   return (
     <div>
       <img src={image} alt="" />
@@ -13,4 +13,4 @@ function Followers({image,name,linktoFinder}) {
   )
 }
 
-export default Followers
+export default UserFollowers;

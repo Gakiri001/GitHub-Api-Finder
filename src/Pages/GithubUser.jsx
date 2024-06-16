@@ -9,10 +9,13 @@ import Location from "../UserProfile/Location"
 import Name from "../UserProfile/Name"
 import Pic from "../UserProfile/Pic"
 import Repos from "../UserProfile/Repos"
-
 import Repositories from "../Repositories/Repositories"
+import UserFollowers from "../Follow/UserFollowers"
+import UserFollowing from "../Follow/UserFollowing"
 
-function GithubUser({ profileData, loading, error, userRepositories}) {
+
+
+function GithubUser({ profileData, loading, error, userRepositories,userFollowers,userFollowing}) {
   if (loading) {
     return <h2>Loading, please wait...</h2>;
   }
@@ -27,6 +30,12 @@ function GithubUser({ profileData, loading, error, userRepositories}) {
 
   const repositoryCount = userRepositories.length
   const displayedRepos = userRepositories.slice(0,30)
+
+  const followersCount = userFollowers.length
+  const displayFollowers = userFollowers.slice(0,30)
+
+  const followeringCount = userFollowing.length
+  const displayFollowing = userFollowing.slice(0,30)
 
   return (
     <div className="GithubUser">
@@ -62,10 +71,38 @@ function GithubUser({ profileData, loading, error, userRepositories}) {
         ) }
         </div>
         <div className="GithubUserRightFollowers">
-          followers
+          <h2>{`Follower (${followersCount})`}</h2>
+          {followersCount === 0 ? (
+            <h2>No Followers Found</h2>
+          ) : (
+            displayFollowers.map((currentfollower) => (
+              <UserFollowers 
+              key={currentfollower.id}
+              image={currentfollower.avatar_url}
+              name={currentfollower.login}
+              linktoFinder={currentfollower.url}
+              />
+            ))
+          )
+
+          }
         </div>
         <div className="GithubUserRightFollowering">
-          followering
+          <h2>{`Following (${followeringCount})`}</h2>
+          {followeringCount === 0 ? (
+            <h2>No following Found</h2>
+          ) : (
+            displayFollowing.map((currentFollowing) => (
+              <UserFollowing
+              key={currentFollowing.id}
+              image={currentFollowing.avatar_url}
+              name={currentFollowing.login}
+              linktoFinder={currentFollowing.url}
+              />
+            ))
+          )
+
+          }
         </div>
       </div>
     </div>

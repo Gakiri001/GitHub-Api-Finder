@@ -6,6 +6,8 @@ function Header() {
   const[profile, setProfile] = useState("Github")
   const[profileData, setProfileData] = useState(null)
   const [userRepositories, setUserRepositories] = useState([])
+  const [userFollowers, setUserFollowers] = useState([])
+  const [userFollowing, setUserFollowing] = useState([])
   const[error, setError] = useState(false)
   const[loading, setLoading] = useState(false)
 
@@ -18,6 +20,8 @@ function Header() {
     console.log("Github Search")
     setProfileData(null)
     setUserRepositories([])
+    setUserFollowers([])
+    setUserFollowing([])
     setError(null)
   
   try{
@@ -64,6 +68,48 @@ function Header() {
     setLoading(false)
   }
 
+  try{
+    setLoading(true)
+    const reponseFollowers = await fetch(`https://api.github.com/users/${profile}/followers`)
+    console.log(reponseFollowers)
+    if(reponseFollowers.ok === true){
+      const dataFollowers = await reponseFollowers.json()
+      console.log(dataFollowers)
+      setUserFollowers(dataFollowers)
+      setLoading(false)
+    }
+    else{
+      setError(`Couldn't fetch ${profile}'s followers`)
+    }
+  }
+  catch(error){
+    setError(`There was an error fetching ${profile}'s Followers. Please check the internet connection`)
+  }
+  finally{
+    setLoading(false)
+  }
+  try{
+    setLoading(true)
+    const responseFollowing = await fetch(`https://api.github.com/users/${profile}/following`)
+    console.log(responseFollowing)
+    if(responseFollowing.ok === true){
+      const dataFolowing = await responseFollowing.json()
+      console.log(dataFolowing)
+      setUserFollowing(dataFolowing)
+      setLoading(false)
+    }
+    else{
+      setError(`Couldn't fetch ${profile}'s following`)
+    }
+
+  }
+  catch(error){
+    setError(`There was an error fetching ${profile}'s Following. Please check the internet connection`)
+  }
+  finally{
+    setLoading(false)
+  }
+
 }
   return (
     <>
@@ -87,6 +133,8 @@ function Header() {
          userRepositories={userRepositories}
          loading={loading}
          error={error}
+         userFollowers={userFollowers}
+         userFollowing={userFollowing}
          />
      </div>
      </>
