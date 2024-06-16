@@ -4,7 +4,7 @@ import "../Pages/GithubUser.css"
 function Pic({ Userpic, alt }) {
   return (
     <div>
-      <img src={Userpic} alt={alt} />
+      <img className='Userpic' src={Userpic} alt={alt} />
     </div>
   );
 }

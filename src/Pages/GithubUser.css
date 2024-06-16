@@ -1,10 +1,11 @@
 .GithubUser{
   display: flex;
   column-gap: 2rem;
-  padding: 1rem 3rem;
+  padding: 4rem 3rem;
 }
 .GithubUser .GithubUserLeft{
   width: 25%;
+  position: fixed;
 }
 
 .username,
@@ -16,11 +17,11 @@
 .UserRepos,
 .UserFollowers,
 .UserFollowing,
-img{
-  margin-bottom: 10px;
+.Userpic{
+  margin-bottom: 8px;
 }
 
-img{
+.Userpic{
   width: 100%;
   border-radius: 10px;
   height: 40vh;
@@ -58,4 +59,103 @@ a{
 
 .GithubUser .GithubUserRight{
   width: 70%;
+  margin-left: 400px;
 }
+.GithubUser .GithubUserRight .GithubUserRightRepos{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.GithubUser .GithubUserRight .GithubUserRightRepos .headerRepo{
+  font-size: 35px;
+  width: 100%;
+}
+.RepositoriesWrapper{
+  display: flex;
+  width: 45%;
+}
+.Repositories{
+  width: 100%;
+}
+.Repositories button{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  border: none;
+  padding-top: 1rem;
+  background-color: #f1f1e6;
+  cursor: pointer;
+}
+
+.Repositories button h2,
+.Repositories button .repoDescription{
+  text-align: left;
+  margin-bottom: 20px;
+}
+.Repositories button .repoDescription{
+  font-size: 18px;
+}
+
+.Repositories button .forksStars{
+  background-color: #fef7d7;
+  width: 100%;
+  display: flex;
+  padding: 10px;
+  column-gap: 2rem;
+  align-items: center;
+}
+.Repositories button .forksStars p{
+  font-size: 15px;
+}
+
+.GithubUserRightFollowing,
+.GithubUserRightFollowers{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 10px;
+}
+.GithubUserRightFollowing .HeaderFollowing,
+.GithubUserRightFollowers .HeaderFollowers{
+  width: 100%;
+}
+.UserFollowingcard,
+.UserFollowerscard{
+  width: 30%;
+  background-color:#fef7d7;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  padding: 10px;
+}
+
+.UserFollowingcard img,
+.UserFollowingcard h2,
+.UserFollowingcard a,
+.UserFollowerscard img,
+.UserFollowerscard h2,
+.UserFollowerscard a{
+  margin-bottom: 10px;
+}
+
+.UserFollowingcard img,
+.UserFollowerscard img{
+  width: 30%;
+}
+
+.UserFollowingcard a button,
+.UserFollowerscard a button{
+  background-color: #070f2b;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border: none;
+  border-radius: 10px;
+}
+

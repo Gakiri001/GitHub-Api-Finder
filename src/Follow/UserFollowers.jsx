@@ -3,10 +3,10 @@ import { MdLink } from "react-icons/md";
 
 function UserFollowers({image,name,linktoFinder}) {
   return (
-    <div>
+    <div className='UserFollowerscard'>
       <img src={image} alt="" />
       <h2>{name}</h2>
-      <a href={linktoFinder}>
+      <a target='_blank' href={linktoFinder}>
         <button><MdLink/> view {name}</button>
       </a>
     </div>
