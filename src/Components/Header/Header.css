@@ -15,13 +15,14 @@
   color: #a4b6cb;
 }
 
-.Header .HeaderP2 p {
+.Header .HeaderP2 a {
   color: #a4b6cb;
   text-transform: capitalize;
   font-size: 18px;
+  cursor: pointer;
 }
 
-.Header .HeaderP2 p span {
+.Header .HeaderP2 a span {
   text-decoration: underline;
 }
 

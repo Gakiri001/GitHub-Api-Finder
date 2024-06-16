@@ -146,8 +146,8 @@ a{
   width: 30%;
 }
 
-.UserFollowingcard a button,
-.UserFollowerscard a button{
+.UserFollowingcard button,
+.UserFollowerscard button{
   background-color: #070f2b;
   color: white;
   padding: 5px 10px;
@@ -159,3 +159,33 @@ a{
   border-radius: 10px;
 }
 
+@media screen and (max-width:58.75em){
+  .GithubUser{
+   flex-direction: column;
+   align-items: center;
+  }
+  .GithubUser .GithubUserLeft{
+    width: 80%;
+    position:relative;
+  }
+  .Userpic{
+    width: 100%;
+    border-radius: 10px;
+    height:auto;
+    object-fit: cover;
+  }
+  .GithubUser .GithubUserRight{
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width:58.75em){
+  .RepositoriesWrapper{
+    width: 100%;
+  }
+  .UserFollowingcard,
+  .UserFollowerscard{
+  width: 40%;
+  }
+}

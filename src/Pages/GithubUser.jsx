@@ -1,20 +1,22 @@
-import "./GithubUser.css"
-import Blog from "../UserProfile/Blog"
-import Company from "../UserProfile/Company"
-import Followers from "../UserProfile/Followers"
-import Following from "../UserProfile/Following"
-import Gitname from "../UserProfile/Gitname"
-import Link from "../UserProfile/Link"
-import Location from "../UserProfile/Location"
-import Name from "../UserProfile/Name"
-import Pic from "../UserProfile/Pic"
-import Repos from "../UserProfile/Repos"
-import Repositories from "../Repositories/Repositories"
-import UserFollowers from "../Follow/UserFollowers"
-import UserFollowing from "../Follow/UserFollowing"
+import "./GithubUser.css";
+import Blog from "../UserProfile/Blog";
+import Company from "../UserProfile/Company";
+import Followers from "../UserProfile/Followers";
+import Following from "../UserProfile/Following";
+import Gitname from "../UserProfile/Gitname";
+import Link from "../UserProfile/Link";
+import Location from "../UserProfile/Location";
+import Name from "../UserProfile/Name";
+import Pic from "../UserProfile/Pic";
+import Repos from "../UserProfile/Repos";
+import Repositories from "../Repositories/Repositories";
+import UserFollowers from "../Follow/UserFollowers";
+import UserFollowing from "../Follow/UserFollowing";
+import useGithubStore from "../store";
 
-function GithubUser({ profileData, loading, error, userRepositories = [], userFollowers = [], userFollowing = [] }) {
-  
+function GithubUser() {
+  const { profileData, loading, error, userRepositories, userFollowers, userFollowing, fetchGitHubData } = useGithubStore();
+
   const repositoryCount = userRepositories.length
   const displayedRepos = userRepositories.slice(0, 30)
 
@@ -83,7 +85,7 @@ function GithubUser({ profileData, loading, error, userRepositories = [], userFo
                     key={currentfollower.id}
                     image={currentfollower.avatar_url}
                     name={currentfollower.login}
-                    linktoFinder={currentfollower.html_url}
+                    handleGitHubSearch={() => fetchGitHubData(currentfollower.login)}
                   />
                 ))
               )}
@@ -104,7 +106,7 @@ function GithubUser({ profileData, loading, error, userRepositories = [], userFo
                     key={currentFollowing.id}
                     image={currentFollowing.avatar_url}
                     name={currentFollowing.login}
-                    linktoFinder={currentFollowing.html_url}
+                    handleGitHubSearch={() => fetchGitHubData(currentFollowing.login)}
                   />
                 ))
               )}
